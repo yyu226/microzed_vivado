@@ -1,0 +1,133 @@
+Copyright 1986-2014 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2014.4 (win64) Build 1071353 Tue Nov 18 18:24:04 MST 2014
+| Date         : Thu Jun 01 13:14:38 2017
+| Host         : yyu226 running 64-bit major release  (build 9200)
+| Command      : report_drc
+------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+           Max violations: <unlimited>
+         Violations found: 15
+
+2. REPORT DETAILS
+-----------------
+CFGBVS-1#1 Warning
+Missing CFGBVS and CONFIG_VOLTAGE Design Properties  
+Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_design.  Configuration bank voltage select (CFGBVS) must be set to VCCO or GND, and CONFIG_VOLTAGE must be set to the correct configuration voltage, in order to determine the I/O voltage support for the pins in bank 0.  It is suggested to specify these either using the 'Edit Device Properties' function in the GUI or directly in the XDC file using the following syntax:
+
+ set_property CFGBVS value1 [current_design]
+ #where value1 is either VCCO or GND
+
+ set_property CONFIG_VOLTAGE value2 [current_design]
+ #where value2 is the voltage provided to configuration bank 0
+
+Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+CKLD-2#1 Warning
+Clock Net has direct IO Driver  
+Clock net FRAME_VALID_IBUF is directly driven by an IO rather than a Clock Buffer. Driver(s): FRAME_VALID_IBUF_inst/O2000
+Related violations: <none>
+
+CKLD-2#2 Warning
+Clock Net has direct IO Driver  
+Clock net LINE_VALID_IBUF is directly driven by an IO rather than a Clock Buffer. Driver(s): LINE_VALID_IBUF_inst/O2000
+Related violations: <none>
+
+IOCS-1#1 Warning
+IOB clock sharing  
+IOs SPI_DAT, SPI_EN placed at Y17, Y16 connects to flops which are clocked by LUPA300/REG_CONFIG/n_0_g0_b0__0, LUPA300/REG_CONFIG/n_0_spi_en_reg_i_2.  Pushing these flops into IOB may cause PAR to fail because the clock route is shared between adjacent (differential pair) IOs.  If there are only two clocks packing them in different BELs might fix the problem, like INST IOB1_flop = BEL FF1 and INST IOB2_flop = BEL FF2.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net LUPA300/REG_CONFIG/n_0_g0_b0__0 is a gated clock net sourced by a combinational pin LUPA300/REG_CONFIG/g0_b0__0/O, cell LUPA300/REG_CONFIG/g0_b0__0. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net LUPA300/REG_CONFIG/n_0_nrc_reg[3]_i_2 is a gated clock net sourced by a combinational pin LUPA300/REG_CONFIG/nrc_reg[3]_i_2/O, cell LUPA300/REG_CONFIG/nrc_reg[3]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net LUPA300/REG_CONFIG/n_0_spi_clk_reg_i_1 is a gated clock net sourced by a combinational pin LUPA300/REG_CONFIG/spi_clk_reg_i_1/O, cell LUPA300/REG_CONFIG/spi_clk_reg_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#4 Warning
+Gated clock check  
+Net LUPA300/REG_CONFIG/n_0_spi_en_reg_i_2 is a gated clock net sourced by a combinational pin LUPA300/REG_CONFIG/spi_en_reg_i_2/O, cell LUPA300/REG_CONFIG/spi_en_reg_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PLCK-12#1 Warning
+Clock Placer Checks  
+Poor placement for routing between an IO pin and BUFG. 
+Resolution: Poor placement of an IO pin and a BUFG has resulted in the router using a non-dedicated path between the two.  There are several things that could trigger this DRC, each of which can cause unpredictable clock insertion delays that result in poor timing.  This DRC could be caused by any of the following: (a) a clock port was placed on a pin that is not a CCIO-pin (b)the BUFG has not been placed in the same half of the device or SLR as the CCIO-pin (c) a single ended clock has been placed on the N-Side of a differential pair CCIO-pin.
+This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
+
+	FRAME_VALID_IBUF_inst (IBUF.O) is locked to P14
+	FRAME_VALID_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y3
+
+Related violations: <none>
+
+PLCK-12#2 Warning
+Clock Placer Checks  
+Poor placement for routing between an IO pin and BUFG. 
+Resolution: Poor placement of an IO pin and a BUFG has resulted in the router using a non-dedicated path between the two.  There are several things that could trigger this DRC, each of which can cause unpredictable clock insertion delays that result in poor timing.  This DRC could be caused by any of the following: (a) a clock port was placed on a pin that is not a CCIO-pin (b)the BUFG has not been placed in the same half of the device or SLR as the CCIO-pin (c) a single ended clock has been placed on the N-Side of a differential pair CCIO-pin.
+This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint is set to FALSE allowing your design to continue. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
+
+	LINE_VALID_IBUF_inst (IBUF.O) is locked to T15
+	LINE_VALID_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y4
+
+Related violations: <none>
+
+PLHOLDVIO-2#1 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT LUPA300/REG_CONFIG/g0_b0__0 is driving clock pin of 1 cells. This could lead to large hold time violations. First few involved cells are:
+    LUPA300/REG_CONFIG/spi_dat_reg {LDCE}
+
+Related violations: <none>
+
+PLHOLDVIO-2#2 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT LUPA300/REG_CONFIG/nrc_reg[3]_i_2 is driving clock pin of 4 cells. This could lead to large hold time violations. First few involved cells are:
+    LUPA300/REG_CONFIG/nrc_reg[0] {LDCE}
+    LUPA300/REG_CONFIG/nrc_reg[1] {LDCE}
+    LUPA300/REG_CONFIG/nrc_reg[2] {LDCE}
+    LUPA300/REG_CONFIG/nrc_reg[3] {LDCE}
+
+Related violations: <none>
+
+PLHOLDVIO-2#3 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT LUPA300/REG_CONFIG/spi_clk_reg_i_1 is driving clock pin of 1 cells. This could lead to large hold time violations. First few involved cells are:
+    LUPA300/REG_CONFIG/spi_clk_reg {LDCE}
+
+Related violations: <none>
+
+PLHOLDVIO-2#4 Warning
+Non-Optimal connections which could lead to hold violations  
+A LUT LUPA300/REG_CONFIG/spi_en_reg_i_2 is driving clock pin of 1 cells. This could lead to large hold time violations. First few involved cells are:
+    LUPA300/REG_CONFIG/spi_en_reg {LDCE}
+
+Related violations: <none>
+
+PLIO-3#1 Warning
+Placement Constraints Check for IO constraints  
+Partially locked IO Bus is found. Following components of the IO Bus DATA_IMAGE[9:0] are not locked:  DATA_IMAGE[1] DATA_IMAGE[0]
+Related violations: <none>
+
+
